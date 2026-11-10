@@ -22,6 +22,7 @@ add_executable(heater_daemon
     DummyPin.h
     ConfigAndHardwareManager.h
     TcpControlServer.h
+    TcpControlServer.cpp
 )
 
 # Подключаем пути к заголовочным файлам и линкуем библиотеки
