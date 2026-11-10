@@ -11,16 +11,17 @@ pkg_check_modules(MODBUS REQUIRED libmodbus)
 # Поиск nlohmann_json
 find_package(nlohmann_json REQUIRED)
 
-# Добавляем все наши исходники (создайте эти файлы в папке проекта)
+# Явно перечисляем только НАШИ файлы. Никакой мусор из папки build сюда не попадет
 add_executable(heater_daemon
     main.cpp
+    HeaterStateMachine.cpp
+    HeaterStateMachine.h
+    Logger.h
     IPin.h
     ModbusPin.h
     DummyPin.h
     ConfigAndHardwareManager.h
-    HeaterStateMachine.h
     TcpControlServer.h
-    Logger.h
 )
 
 # Подключаем пути к заголовочным файлам и линкуем библиотеки

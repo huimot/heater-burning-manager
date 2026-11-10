@@ -1,0 +1,21 @@
+{
+    "log_path": "/var/log/heater_manager/",
+    "network": {
+        "listen_port": 5555
+    },
+    "timeouts_sec": {
+        "gate_open": 18,
+        "blowing_up": 15,
+        "blowing_down": 240
+    },
+    "modbus_masters": [
+        {"id": "block_1", "ip": "192.168.2.46", "port": 502},
+        {"id": "block_2", "ip": "192.168.2.47", "port": 502}
+    ],
+    "pins": [
+        {"name": "OverHeat",      "dir": "input",  "driver": "modbus", "master_id": "block_1", "address": 5, "inverted": true},
+        {"name": "FlameDetected", "dir": "input",  "driver": "modbus", "master_id": "block_2", "address": 7, "inverted": false},
+        {"name": "Blower",        "dir": "output", "driver": "modbus", "master_id": "block_1", "address": 5, "inverted": false},
+        {"name": "Ignition",      "dir": "output", "driver": "dummy",  "comment": "Пока тестим на ПК без железа"}
+    ]
+}
